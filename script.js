@@ -14,7 +14,7 @@ const products = [
     { id: 13, name: 'Own Jasher Private', price: 15000 },
     { id: 14, name: 'Script Pushkontak', price: 10000 },
     { id: 15, name: 'Marga push ch', price: 5000 },
-    { id: 16, name: 'Ama Own push ch', price: 10000 }
+    { id: 16, name: 'Own push ch', price: 10000 }
 ];
 
 let cart = [];
