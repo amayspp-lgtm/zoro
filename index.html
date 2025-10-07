@@ -9,33 +9,50 @@
 </head>
 <body>
 
-    <header>
-        <h1><i class="fas fa-store"></i> Zoro - Toko Panel & Script</h1>
-    </header>
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner-circle"></div>
+            <p>ZORO.</p>
+        </div>
+    </div>
 
-    <main>
-        <section id="products-list" class="card">
-            <h2>Daftar Produk</h2>
-            <div id="product-grid">
+    <div id="main-content" class="hidden">
+        <header>
+            <h1><i class="fas fa-store"></i> Zoro - Toko Panel & Script</h1>
+        </header>
+
+        <main>
+            <section id="products-list" class="card">
+                <h2>Daftar Produk</h2>
+                <div id="product-grid">
+                    </div>
+            </section>
+
+            <section id="shopping-cart" class="card">
+                <h2><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h2>
+                <ul id="cart-items">
+                    </ul>
+                <div id="cart-total">
+                    <p>Total: **Rp 0**</p>
                 </div>
-        </section>
-
-        <section id="shopping-cart" class="card">
-            <h2><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h2>
-            <ul id="cart-items">
-                </ul>
-            <div id="cart-total">
-                <p>Total: **Rp 0**</p>
-            </div>
-            <button id="checkout-btn"><i class="fas fa-cash-register"></i> Checkout</button>
-        </section>
-
-        <section id="checkout-confirmation" class="card" style="display: none;">
-            <h2>Konfirmasi Pembayaran</h2>
-            <div id="payment-details">
+                <button id="checkout-btn"><i class="fas fa-cash-register"></i> Checkout</button>
+            </section>
+            
+            <section id="payment-selection" class="card" style="display: none;">
+                <h2>Pilih Metode Pembayaran</h2>
+                <div class="payment-options">
+                    <button class="payment-option-btn" data-method="dana"><i class="fas fa-wallet"></i> Bayar dengan DANA</button>
+                    <button class="payment-option-btn" data-method="qris"><i class="fas fa-qrcode"></i> Bayar dengan QRIS</button>
                 </div>
-        </section>
-    </main>
+            </section>
+
+            <section id="checkout-confirmation" class="card" style="display: none;">
+                <h2>Konfirmasi Pembayaran</h2>
+                <div id="payment-details">
+                    </div>
+            </section>
+        </main>
+    </div>
 
     <script src="script.js"></script>
 </body>

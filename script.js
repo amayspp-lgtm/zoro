@@ -92,6 +92,7 @@ function updateCart() {
     cartTotalEl.querySelector('p').innerHTML = `Total: <strong>Rp ${total.toLocaleString('id-ID')}</strong>`;
 }
 
+// Logika Checkout yang baru
 document.getElementById('checkout-btn').addEventListener('click', () => {
     if (cart.length === 0) {
         alert('Keranjang belanja Anda kosong.');
@@ -99,15 +100,36 @@ document.getElementById('checkout-btn').addEventListener('click', () => {
     }
     document.getElementById('products-list').style.display = 'none';
     document.getElementById('shopping-cart').style.display = 'none';
-    document.getElementById('checkout-confirmation').style.display = 'block';
-    showPaymentDetails();
+    document.getElementById('payment-selection').style.display = 'block';
 });
 
-function showPaymentDetails() {
+// Logika Pemilihan Pembayaran
+document.querySelectorAll('.payment-option-btn').forEach(button => {
+    button.addEventListener('click', (event) => {
+        const method = event.target.dataset.method;
+        document.getElementById('payment-selection').style.display = 'none';
+        document.getElementById('checkout-confirmation').style.display = 'block';
+        showPaymentDetails(method);
+    });
+});
+
+function showPaymentDetails(method) {
     const paymentDetailsEl = document.getElementById('payment-details');
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    let paymentContent = '';
     
-    const orderMessage = `
+    // Teks yang akan disalin ke clipboard (sesuai metode)
+    let orderMessage = ``;
+
+    if (method === 'dana') {
+        paymentContent = `
+            <p class="payment-info">
+                Metode Pembayaran: DANA <br>
+                Nomor: <span>082373215063</span> <br>
+                A.N: *****
+            </p>
+        `;
+        orderMessage = `
 *╭───••─ ❖ ─••───╮*
 *✨ KONFIRMASI PESANAN ✨*
 *╰───••─ ❖ ─••───╯*
@@ -125,17 +147,37 @@ ${cart.map(item => `   - ${item.name} (${item.quantity}x)`).join('\n')}
 *💬 KONFIRMASI:*
    Saya sudah melakukan pembayaran dan siap mengirim bukti.
 `;
+    } else if (method === 'qris') {
+        paymentContent = `
+            <p>Silakan scan QRIS di bawah ini:</p>
+            <img id="qris-image" src="qris.jpg" alt="QRIS Code">
+        `;
+        orderMessage = `
+*╭───••─ ❖ ─••───╮*
+*✨ KONFIRMASI PESANAN ✨*
+*╰───••─ ❖ ─••───╯*
+
+*📜 Rincian Pesanan:*
+${cart.map(item => `   - ${item.name} (${item.quantity}x)`).join('\n')}
+
+*💰 Total Pembayaran:*
+   Rp ${total.toLocaleString('id-ID')}
+
+*💳 Metode Pembayaran:*
+   QRIS
+
+*💬 KONFIRMASI:*
+   Saya sudah melakukan pembayaran dan siap mengirim bukti.
+`;
+    }
 
     paymentDetailsEl.innerHTML = `
         <p class="payment-info">
             Total yang harus dibayar: <strong>Rp ${total.toLocaleString('id-ID')}</strong>
         </p>
-        <p class="payment-info">
-            Metode Pembayaran: DANA <br>
-            Nomor: <span>082373215063</span> <br>
-            A.N: *****
-        </p>
         
+        ${paymentContent}
+
         <p>
             <i class="fas fa-exclamation-circle"></i>
             Silakan salin detail di bawah ini, lalu kirim ke grup WhatsApp.
@@ -163,5 +205,21 @@ ${cart.map(item => `   - ${item.name} (${item.quantity}x)`).join('\n')}
     });
 }
 
-// Inisialisasi tampilan produk saat halaman dimuat
-document.addEventListener('DOMContentLoaded', renderProducts);
+// Logika Preloader
+window.addEventListener('load', () => {
+    const preloader = document.getElementById('preloader');
+    const mainContent = document.getElementById('main-content');
+    
+    setTimeout(() => {
+        preloader.style.opacity = '0';
+        preloader.style.pointerEvents = 'none';
+
+        setTimeout(() => {
+            preloader.style.display = 'none';
+            mainContent.classList.remove('hidden');
+            mainContent.classList.add('visible');
+        }, 500); 
+    }, 1000);
+
+    renderProducts();
+});
