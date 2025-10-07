@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoro - Toko Panel & Script</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div id="preloader">
+        <div class="loader-content">
+            <div class="spinner-circle"></div>
+            <p>ZORO.</p>
+        </div>
+    </div>
+
+    <div id="main-content" class="hidden">
+        <header>
+            <h1><i class="fas fa-store"></i> Zoro - Toko Panel & Script</h1>
+        </header>
+
+        <main>
+            <section id="products-list" class="card">
+                <h2>Daftar Produk</h2>
+                <div id="product-grid">
+                    </div>
+            </section>
+
+            <section id="shopping-cart" class="card">
+                <h2><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h2>
+                <ul id="cart-items">
+                    </ul>
+                <div id="cart-total">
+                    <p>Total: **Rp 0**</p>
+                </div>
+                <button id="checkout-btn"><i class="fas fa-cash-register"></i> Checkout</button>
+            </section>
+
+            <section id="checkout-confirmation" class="card" style="display: none;">
+                <h2>Konfirmasi Pembayaran</h2>
+                <div id="payment-details">
+                    </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
