@@ -163,21 +163,5 @@ ${cart.map(item => `   - ${item.name} (${item.quantity}x)`).join('\n')}
     });
 }
 
-// Logika Preloader
-window.addEventListener('load', () => {
-    const preloader = document.getElementById('preloader');
-    const mainContent = document.getElementById('main-content');
-    
-    setTimeout(() => {
-        preloader.style.opacity = '0';
-        preloader.style.pointerEvents = 'none';
-        
-        setTimeout(() => {
-            preloader.style.display = 'none';
-            mainContent.classList.remove('hidden');
-            mainContent.classList.add('visible');
-        }, 500); 
-    }, 1500);
-
-    renderProducts();
-});
+// Inisialisasi tampilan produk saat halaman dimuat
+document.addEventListener('DOMContentLoaded', renderProducts);

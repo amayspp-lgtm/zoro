@@ -9,42 +9,33 @@
 </head>
 <body>
 
-    <div id="preloader">
-        <div class="loader-content">
-            <div class="spinner-circle"></div>
-            <p>ZORO.</p>
-        </div>
-    </div>
+    <header>
+        <h1><i class="fas fa-store"></i> Zoro - Toko Panel & Script</h1>
+    </header>
 
-    <div id="main-content" class="hidden">
-        <header>
-            <h1><i class="fas fa-store"></i> Zoro - Toko Panel & Script</h1>
-        </header>
-
-        <main>
-            <section id="products-list" class="card">
-                <h2>Daftar Produk</h2>
-                <div id="product-grid">
-                    </div>
-            </section>
-
-            <section id="shopping-cart" class="card">
-                <h2><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h2>
-                <ul id="cart-items">
-                    </ul>
-                <div id="cart-total">
-                    <p>Total: **Rp 0**</p>
+    <main>
+        <section id="products-list" class="card">
+            <h2>Daftar Produk</h2>
+            <div id="product-grid">
                 </div>
-                <button id="checkout-btn"><i class="fas fa-cash-register"></i> Checkout</button>
-            </section>
+        </section>
 
-            <section id="checkout-confirmation" class="card" style="display: none;">
-                <h2>Konfirmasi Pembayaran</h2>
-                <div id="payment-details">
-                    </div>
-            </section>
-        </main>
-    </div>
+        <section id="shopping-cart" class="card">
+            <h2><i class="fas fa-shopping-cart"></i> Keranjang Belanja</h2>
+            <ul id="cart-items">
+                </ul>
+            <div id="cart-total">
+                <p>Total: **Rp 0**</p>
+            </div>
+            <button id="checkout-btn"><i class="fas fa-cash-register"></i> Checkout</button>
+        </section>
+
+        <section id="checkout-confirmation" class="card" style="display: none;">
+            <h2>Konfirmasi Pembayaran</h2>
+            <div id="payment-details">
+                </div>
+        </section>
+    </main>
 
     <script src="script.js"></script>
 </body>
