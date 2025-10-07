@@ -228,3 +228,54 @@ pre {
         padding: 15px;
     }
 }
+/* Gaya Pop-up Promosi Mengambang yang Baru */
+#promo-popup {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px); /* Posisikan di tengah atas dan sembunyikan */
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%); /* Warna yang senada dengan header */
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+#promo-popup.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0); /* Muncul dari atas */
+}
+
+#promo-popup.hide {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-100px); /* Hilang ke atas */
+}
+
+#promo-popup a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+#promo-popup i {
+    font-size: 18px;
+    margin-right: 8px;
+    color: #f1c40f; /* Warna kuning terang sebagai aksen */
+}
+
+#promo-popup .popup-text {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+#promo-popup u {
+    text-decoration: underline;
+}
+
+/* Sisa kode CSS lainnya tetap sama */
+/* ... */

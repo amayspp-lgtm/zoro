@@ -92,7 +92,6 @@ function updateCart() {
     cartTotalEl.querySelector('p').innerHTML = `Total: <strong>Rp ${total.toLocaleString('id-ID')}</strong>`;
 }
 
-// Logika Checkout yang baru
 document.getElementById('checkout-btn').addEventListener('click', () => {
     if (cart.length === 0) {
         alert('Keranjang belanja Anda kosong.');
@@ -103,7 +102,6 @@ document.getElementById('checkout-btn').addEventListener('click', () => {
     document.getElementById('payment-selection').style.display = 'block';
 });
 
-// Logika Pemilihan Pembayaran
 document.querySelectorAll('.payment-option-btn').forEach(button => {
     button.addEventListener('click', (event) => {
         const method = event.target.dataset.method;
@@ -116,9 +114,8 @@ document.querySelectorAll('.payment-option-btn').forEach(button => {
 function showPaymentDetails(method) {
     const paymentDetailsEl = document.getElementById('payment-details');
     const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    let paymentContent = '';
     
-    // Teks yang akan disalin ke clipboard (sesuai metode)
+    let paymentContent = '';
     let orderMessage = ``;
 
     if (method === 'dana') {
@@ -205,10 +202,11 @@ ${cart.map(item => `   - ${item.name} (${item.quantity}x)`).join('\n')}
     });
 }
 
-// Logika Preloader
+// Logika Preloader dan Pop-up Promosi
 window.addEventListener('load', () => {
     const preloader = document.getElementById('preloader');
     const mainContent = document.getElementById('main-content');
+    const promoPopup = document.getElementById('promo-popup');
     
     setTimeout(() => {
         preloader.style.opacity = '0';
@@ -218,6 +216,22 @@ window.addEventListener('load', () => {
             preloader.style.display = 'none';
             mainContent.classList.remove('hidden');
             mainContent.classList.add('visible');
+            
+            // Tampilkan pop-up promosi setelah konten utama terlihat
+            setTimeout(() => {
+                promoPopup.classList.add('show');
+            }, 1000); 
+
+            // Sembunyikan pop-up setelah 5 detik
+            setTimeout(() => {
+                promoPopup.classList.add('hide');
+            }, 6000);
+            
+            // Hapus pop-up dari DOM setelah animasi selesai
+            setTimeout(() => {
+                promoPopup.remove();
+            }, 6600); // Durasi 600ms (0.6s) dari animasi 'hide'
+
         }, 500); 
     }, 1000);
 
